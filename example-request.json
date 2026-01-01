@@ -1,0 +1,268 @@
+{
+  "input": {
+    "workflow": {
+      "1": {
+        "inputs": {
+          "seed": 4480,
+          "steps": 30,
+          "cfg": 6,
+          "sampler_name": "dpmpp_2m_sde",
+          "scheduler": "karras",
+          "denoise": 1,
+          "model": [
+            "12",
+            0
+          ],
+          "positive": [
+            "41",
+            0
+          ],
+          "negative": [
+            "42",
+            0
+          ],
+          "latent_image": [
+            "5",
+            0
+          ]
+        },
+        "class_type": "KSampler",
+        "_meta": {
+          "title": "KSampler"
+        }
+      },
+      "2": {
+        "inputs": {
+          "ckpt_name": "sdxl/ponyRealism_V22MainVAE.safetensors"
+        },
+        "class_type": "CheckpointLoaderSimple",
+        "_meta": {
+          "title": "CheckpointLoaderSimple"
+        }
+      },
+      "5": {
+        "inputs": {
+          "value": 720
+        },
+        "class_type": "EmptyLatentImage",
+        "_meta": {
+          "title": "EmptyLatentImage"
+        }
+      },
+      "9": {
+        "inputs": {
+          "value": 1.5,
+          "image": [
+            "16",
+            0
+          ],
+          "model": [
+            "63",
+            0
+          ],
+          "positive": [
+            "41",
+            0
+          ],
+          "negative": [
+            "42",
+            0
+          ],
+          "vae": [
+            "10",
+            0
+          ],
+          "upscale_model": [
+            "11",
+            0
+          ]
+        },
+        "class_type": "UltimateSDUpscale",
+        "_meta": {
+          "title": "UltimateSDUpscale"
+        }
+      },
+      "10": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "11": {
+        "inputs": {
+          "model_name": "4x-UltraSharp.pth"
+        },
+        "class_type": "UpscaleModelLoader",
+        "_meta": {
+          "title": "UpscaleModelLoader"
+        }
+      },
+      "12": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "16": {
+        "inputs": {
+          "samples": [
+            "1",
+            0
+          ],
+          "vae": [
+            "10",
+            0
+          ]
+        },
+        "class_type": "VAEDecode",
+        "_meta": {
+          "title": "VAEDecode"
+        }
+      },
+      "17": {
+        "inputs": {
+          "images": [
+            "16",
+            0
+          ]
+        },
+        "class_type": "PreviewImage",
+        "_meta": {
+          "title": "PreviewImage"
+        }
+      },
+      "39": {
+        "inputs": {
+          "filename_prefix": "ComfyUI",
+          "images": [
+            "9",
+            0
+          ]
+        },
+        "class_type": "SaveImage",
+        "_meta": {
+          "title": "SaveImage"
+        }
+      },
+      "41": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "42": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "53": {
+        "inputs": {
+          "value": 2880,
+          "clip": [
+            "62",
+            0
+          ],
+          "text_g": [
+            "64",
+            0
+          ],
+          "text_l": [
+            "64",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncodeSDXL",
+        "_meta": {
+          "title": "CLIPTextEncodeSDXL"
+        }
+      },
+      "54": {
+        "inputs": {
+          "value": 2880,
+          "clip": [
+            "62",
+            0
+          ],
+          "text_g": [
+            "65",
+            0
+          ],
+          "text_l": [
+            "65",
+            0
+          ]
+        },
+        "class_type": "CLIPTextEncodeSDXL",
+        "_meta": {
+          "title": "CLIPTextEncodeSDXL"
+        }
+      },
+      "60": {
+        "inputs": {
+          "text": "simple"
+        },
+        "class_type": "LoRA Stacker",
+        "_meta": {
+          "title": "LoRA Stacker"
+        }
+      },
+      "61": {
+        "inputs": {
+          "lora_stack": [
+            "60",
+            0
+          ],
+          "model": [
+            "2",
+            0
+          ],
+          "optional_clip": [
+            "2",
+            1
+          ]
+        },
+        "class_type": "easy loraStackApply",
+        "_meta": {
+          "title": "easy loraStackApply"
+        }
+      },
+      "62": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "63": {
+        "inputs": {},
+        "class_type": "Reroute",
+        "_meta": {
+          "title": "Reroute"
+        }
+      },
+      "64": {
+        "inputs": {
+          "text": "nsfwupscaler, score_9, score_8_up, score_7_up, BREAK, realistic, photo, photorealistic, \n\nbreasts, nipples, pussy, spread legs, open mouth, brown hair, anus, solo focus, medium breasts, pubic hair, long hair, lips, clitoris, brown eyes, spread pussy, lying, on back, female pubic hair, labia"
+        },
+        "class_type": "DF_Text_Box",
+        "_meta": {
+          "title": "DF_Text_Box"
+        }
+      },
+      "65": {
+        "inputs": {
+          "filename": "Stable_Yogis_PDXL_Negatives, ((monochrome)). score_5, score_4, 3d, simple background, extra fingers, watermark, cross eyed"
+        },
+        "class_type": "DF_Text_Box",
+        "_meta": {
+          "title": "DF_Text_Box"
+        }
+      }
+    }
+  }
+}
